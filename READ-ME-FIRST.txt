@@ -1,0 +1,28 @@
+EXPENSO WEB CONSOLE - READ THIS FIRST
+=====================================
+
+Gmail blocks JavaScript files (.js and .mjs) even inside a zip, so two files
+were renamed for transit. Restore them before building, or  fails.
+
+From the expenso-web folder:
+
+  Windows (PowerShell):
+    Rename-Item server.mjs.RENAME server.mjs
+    Rename-Item e2e\screenshots.mjs.RENAME screenshots.mjs
+
+  macOS / Linux:
+    mv server.mjs.RENAME server.mjs
+    mv e2e/screenshots.mjs.RENAME e2e/screenshots.mjs
+
+server.mjs is the one that matters - package.json runs it via .
+screenshots.mjs is only a test helper.
+
+Nothing else was changed. Full deployment steps are in
+DEPLOY-RAILWAY-WEB.md next to this file.
+
+Quick version:
+  Variable on THIS service : VITE_API_BASE=https://YOUR-BACKEND.up.railway.app
+                             (read at BUILD time - redeploy after changing it)
+  Variable on the BACKEND  : WEB_ORIGIN=https://YOUR-CONSOLE.up.railway.app
+                             (exact origin, no trailing slash)
+  Sign-in page             : /sign-in   (finance and admin accounts only)

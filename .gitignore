@@ -1,0 +1,4 @@
+# local build output and test artefacts
+node_modules/
+dist/
+e2e/.results/
